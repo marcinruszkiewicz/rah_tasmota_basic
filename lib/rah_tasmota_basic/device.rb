@@ -40,7 +40,7 @@ module RahTasmotaBasic
     private
 
     def send_command(command:)
-      params = { cmnd: 'Power', user: @user, password: @password }
+      params = { cmnd: command, user: @user, password: @password }
       uri = @device.dup
       uri.query = URI.encode_www_form(params)
       puts uri.query
