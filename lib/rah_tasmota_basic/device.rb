@@ -17,6 +17,7 @@ module RahTasmotaBasic
       response = send_command(command: 'Power')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
+      puts response
       response['POWER'] == 'ON'
     end
 
@@ -24,6 +25,7 @@ module RahTasmotaBasic
       response = send_command(command: 'Power On')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
+      puts response
       response['POWER'] == 'ON'
     end
 
@@ -31,6 +33,7 @@ module RahTasmotaBasic
       response = send_command(command: 'Power Off')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
+      puts response
       response['POWER'] == 'ON'
     end
 
@@ -40,6 +43,7 @@ module RahTasmotaBasic
       params = { cmnd: 'Power', user: @user, password: @password }
       uri = @device.dup
       uri.query = URI.encode_www_form(params)
+      puts uri.query
       res = Net::HTTP.get_response(uri)
 
       JSON.parse res.body
