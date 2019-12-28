@@ -17,21 +17,21 @@ module RahTasmotaBasic
       response = send_command(command: 'Power')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
-      response['POWER']
+      response['POWER'] == 'ON'
     end
 
     def on
       response = send_command(command: 'Power On')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
-      response['POWER']
+      response['POWER'] == 'ON'
     end
 
     def off
       response = send_command(command: 'Power Off')
       raise TasmotaError, response['WARNING'] if response['POWER'].nil?
 
-      response['POWER']
+      response['POWER'] == 'ON'
     end
 
     private
